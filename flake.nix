@@ -19,6 +19,11 @@
         _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
           overlays = [ inputs.moonbit-overlay.overlays.default ];
+          config = {
+            problems.handlers = {
+              tcc.broken = "warn";
+            };
+          };
         };
 
         devshells.default = {
